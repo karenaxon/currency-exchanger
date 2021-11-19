@@ -5,9 +5,16 @@ import './css/styles.css';
 import ExchangeService from './js/exchange-service.js';
 import InitialCallService from './js/initial-call-service.js';
 
-function getElements(response) {
+function clearFields(){
+  $('#baseCode').val("");
+  $('#targetCode').val("");
+  $('#display-exchange').text("");
+  $('#showErrors').text("");
+}
+function getElements(response, exchangeAmount) {
   if (response) {
-    $('#display-exchange').text(`The exchange is ${response.conversion_result}%`);
+    const formattedNumber = response.conversion_result.toFixed(2).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    $('#display-exchange').text(`${exchangeAmount} ${response.base_code} is ${formattedNumber} ${response.target_code}`);
   } else {
     $('.showErrors').text(`There was an error: ${response}`);
   }
@@ -15,7 +22,7 @@ function getElements(response) {
 
 async function makeApiCall(fromCode, toCode, number) {
   const response = await ExchangeService.getExchange(fromCode, toCode, number);
-  getElements(response);
+  getElements(response, number);
 }
 
 function createDropdownMenus(data) {
@@ -41,11 +48,11 @@ async function initialCall() {
 initialCall();
 
 $(document).ready(function() {
+  clearFields();
   $('#btn').click(function() {
     const inputAmount = parseFloat($('#input').val());
     const fromCurrencyCode = $('#baseCode').val();
     const toCurrencyCode = $('#targetCode').val();
-    // clearFields();
     makeApiCall(fromCurrencyCode, toCurrencyCode, inputAmount);
   });
 });

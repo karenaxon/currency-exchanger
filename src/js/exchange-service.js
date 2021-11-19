@@ -1,7 +1,7 @@
 export default class ExchangeService {  
-  static async getExchange(baseCode, targeCode, amount) {
+  static async getExchange() {
     try {
-      const response = await fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_Key}/pair/${baseCode}/${targeCode}/${amount}`);
+      const response = await fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/EUR/10`);
       if (!response.ok) {
         throw Error(response.statusText);
       }

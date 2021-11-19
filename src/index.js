@@ -11,6 +11,13 @@ function getElements(response) {
     $('.showErrors').text(`There was an error: ${response}`);
   }
 }
+function createMenus(response) {
+  if (response) {
+    $('#baseCode').append(`<option value="${response.conversion_rates}> ${response.conversion_rates} </option>`);
+  } else {
+    $('.showErrors').text(`There was an error: ${response}`);
+  }
+}
 
 async function makeApiCall(fromCode, toCode, number) {
   const response = await ExchangeService.getExchange(fromCode, toCode, number);

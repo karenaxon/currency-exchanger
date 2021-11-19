@@ -12,8 +12,8 @@ function getElements(response) {
   }
 }
 
-async function makeApiCall() {
-  const response = await ExchangeService.getExchange();
+async function makeApiCall(fromCode, toCode, number) {
+  const response = await ExchangeService.getExchange(fromCode, toCode, number);
   getElements(response);
 }
 
@@ -21,6 +21,6 @@ $(document).ready(function() {
   $('#btn').click(function() {
     let inputAmount = parseFloat($('#input').val());
     // clearFields();
-    makeApiCall();
+    makeApiCall("USD", "EUR", inputAmount);
   });
 });

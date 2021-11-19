@@ -11,12 +11,16 @@ function clearFields(){
   $('#display-exchange').text("");
   $('#showErrors').text("");
 }
+
 function getElements(response, exchangeAmount) {
-  if (response) {
-    const formattedNumber = response.conversion_result.toFixed(2).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-    $('#display-exchange').text(`${exchangeAmount} ${response.base_code} is ${formattedNumber} ${response.target_code}`);
+  if(response.result === "error") {
+    $('#display-error').text(`We don't support the supplied currency code.`);
+  }else if (response) {
+    const formattedTargetNumber = response.conversion_result.toFixed(2).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    const formattedBaseNumber = exchangeAmount.toFixed(2).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ,");
+    $('#display-exchange').text(`${formattedBaseNumber} ${response.base_code} is ${formattedTargetNumber} ${response.target_code}`);
   } else {
-    $('.showErrors').text(`There was an error: ${response}`);
+    $('#display-error').text(`There was an error: ${response}`);
   }
 }
 
@@ -28,15 +32,13 @@ async function makeApiCall(fromCode, toCode, number) {
 function createDropdownMenus(data) {
   if (data) {
     const conversionRates = data.conversion_rates;
-    
     for (const key in conversionRates) {
       console.log(key);
       $('#baseCode').append(`<option value="${key}"> ${key} </option>`);
       $('#targetCode').append(`<option value="${key}"> ${key} </option>`);
     } 
-    
   } else {
-    $('.showErrors').text(`There was an error: ${data}`);
+    $('#display-error').text(`There was an error: ${data}`);
   }
 }
 
@@ -46,7 +48,6 @@ async function initialCall() {
 }
 
 initialCall();
-
 $(document).ready(function() {
   clearFields();
   $('#btn').click(function() {

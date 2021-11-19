@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Exchanger</title>
+</head>
+<body>
+  <div class="container">
+    <p class="h1">Currency Exchanger</p>
+    <label class="form-label mb-3 mb-3">Enter amount to convert:
+      <input id="input" type="text" class="form-control" placeholder="Amount">
+    </label>
+    <div class="input-group mb-3"> 
+      <label class="input-group-text">Covert from</label>
+      <select id="baseCode" name="baseCode" class="form-select">
+      </select>
+    </div>
+    <div class="input-group mb-3"> 
+      <label class="input-group-text">Covert To</label>
+      <select id="targetCode" name="targetCode" class="form-select">
+      </select>
+    </div>
+    <button id="btn" type="submit" class="btn btn-primary">Show Exchange Amount</button>
+    <div class="container" id="display-exchange"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+body{
+ background-color:rgba(95, 158, 160, 0.5);
+  
+}
+
+#display-error, #display-exchange {
+  padding-top: 3rem;
+}
+
+.input-group-text {
+  width: 20rem;
+}
+
+#title {
+  margin-top: 3rem;
+}

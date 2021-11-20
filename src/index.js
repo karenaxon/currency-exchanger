@@ -10,11 +10,13 @@ function clearFields(){
   $('#targetCode').val("");
   $('#display-exchange').text("");
   $('#showErrors').text("");
+  $('#input').val("");
 }
 
 function getElements(response, exchangeAmount) {
   if(response.result === "error") {
     $('#display-error').text(`We don't support the supplied currency code.`);
+    //Couldn't use if(response.error-type === "unknown-code") because -type isn't allowed as a variable name.
   }else if (response) {
     const formattedTargetNumber = response.conversion_result.toFixed(2).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     const formattedBaseNumber = exchangeAmount.toFixed(2).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ,");
@@ -51,9 +53,17 @@ initialCall();
 $(document).ready(function() {
   clearFields();
   $('#btn').click(function() {
+    const input = $('#input').val();
     const inputAmount = parseFloat($('#input').val());
     const fromCurrencyCode = $('#baseCode').val();
     const toCurrencyCode = $('#targetCode').val();
+
+    if (isNaN(input)){
+      clearFields();
+      $('#display-error').text(`Please enter an amount.`);
+      
+    }
+
     makeApiCall(fromCurrencyCode, toCurrencyCode, inputAmount);
   });
 });

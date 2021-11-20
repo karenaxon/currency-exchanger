@@ -8,8 +8,8 @@
   <title>Currency Exchanger</title>
 </head>
 <body>
-  <div class="container">
-    <p class="h1" id="title">Currency Exchanger</p>
+  <div id="main-container" class="container">
+    <p class="h1 text-center pb-3" id="title">Currency Exchanger</p>
     <input id="input" type="text" class="form-control mb-3" placeholder="Amount">
     <div class="input-group mb-3"> 
       <label class="input-group-text">Covert from - select one</label>
@@ -21,9 +21,9 @@
       <select id="targetCode" name="targetCode" class="form-select">
       </select>
     </div>
-    <button id="btn" type="submit" class="btn btn-primary">Show Exchange Amount</button>
-    <p class="h3 container" id="display-exchange"></p>
-    <p class="h3 container" id="display-error"></p>
+    <button id="btn" type="submit" class="btn btn-primary text-center">Show Exchange Amount</button>
+    <p class="h3 container text-center" id="display-exchange"></p>
+    <p class="h3 container text-center" id="display-error"></p>
   </div>
 </body>
 </html>

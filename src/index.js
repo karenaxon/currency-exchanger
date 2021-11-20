@@ -8,10 +8,14 @@ import InitialCallService from './js/initial-call-service.js';
 function clearFields(){
   $('#baseCode').val("");
   $('#targetCode').val("");
-  $('#display-exchange').text("");
-  $('#showErrors').text("");
   $('#input').val("");
 }
+
+$('#input').on('click', function(){
+  $('#display-exchange').text('');
+  $('#display-error').text('');
+  clearFields();
+});
 
 function getElements(response, exchangeAmount) {
   if(response.result === "error") {
@@ -52,18 +56,18 @@ async function initialCall() {
 initialCall();
 $(document).ready(function() {
   clearFields();
-  $('#btn').click(function() {
+  $('#btn').on('click', function() {
     const input = $('#input').val();
     const inputAmount = parseFloat($('#input').val());
     const fromCurrencyCode = $('#baseCode').val();
     const toCurrencyCode = $('#targetCode').val();
-
-    if (isNaN(input)){
-      clearFields();
+    
+    if (isNaN(input) || input === ""){
       $('#display-error').text(`Please enter an amount.`);
-      
+    } else if(fromCurrencyCode === null || toCurrencyCode === null){
+      $('#display-error').text(`Please select a currency.`);
+    } else{
+      makeApiCall(fromCurrencyCode, toCurrencyCode, inputAmount);
     }
-
-    makeApiCall(fromCurrencyCode, toCurrencyCode, inputAmount);
   });
 });

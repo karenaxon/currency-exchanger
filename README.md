@@ -1,5 +1,5 @@
 # Currency Exchanger
-Use this application to determine the most recent exchange rate. 
+This application converts exchange rates from a base currency to a target currency based on the most recent exchange rate. 
 
 #### By Karen Axon
 
@@ -10,7 +10,6 @@ Use this application to determine the most recent exchange rate.
 * CSS
 * Bootstrap
 * Node
-* Jest
 * Webpack
 * Babel
 * ExchangeRate-API
@@ -18,13 +17,13 @@ Use this application to determine the most recent exchange rate.
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Setup/Installation 
-* Click on the [repository's](https://github.com/karenaxon/programming-language-suggester.git) link.
+* Click on the [repository's](https://github.com/karenaxon/currency-exchanger) link.
 * Click on the green "Code" button and copy the repository URL.
 * Open your terminal and navigate to the location where you would like to clone the application.
-* Use the command _git clone https://github.com/karenaxon/programming-language-suggester.git_ to clone the repository.
+* Use the command _git clone https://github.com/karenaxon/currency-exchanger.git_ to clone the repository.
 * Get a free API key by going to the [ExchangeRate-API](https://www.exchangerate-api.com/)  website. 
 * Click on the "Get Free Key" button and create an account.
-* Create an .env file at the top level of your directory.
+* Create an .env file at the top level of your directory (of the cloned repository).
 * Add your key to the .env file in the following format: API_KEY=YourKeyHere.
 * From the top level directory, use the command _npm install_ to download the npm packages that the application needs.
 * Build the application with the command _npm run build_.		
@@ -51,7 +50,7 @@ After following the Setup/Installation steps above:
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-Copyright (c) October, 2021 - Karen Axon
+Copyright (c) November, 2021 - Karen Axon
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 

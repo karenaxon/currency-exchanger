@@ -61,7 +61,6 @@ $(document).ready(function() {
     if (isNaN(input)){
       clearFields();
       $('#display-error').text(`Please enter an amount.`);
-      
     }
 
     makeApiCall(fromCurrencyCode, toCurrencyCode, inputAmount);
